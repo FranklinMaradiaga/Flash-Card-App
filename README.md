@@ -7,7 +7,7 @@ Flash Card now allows the user to create new cards and stores them locally on th
 
 ### App Walk-though
 
-![](https://i.imgur.com/xBQ7IEh.gif)
+![](https://i.imgur.com/cUHcx01.gif)
 
 
 ## Required
