@@ -21,5 +21,22 @@
         android:gravity="center"
         android:text="Barack Obama"
         android:textSize="40sp"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/flashcard_add_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/icon_add" />
+
+    <ImageView
+        android:id="@+id/flashcard_next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="250dp"
+        android:src="@drawable/icon_next" />
+
 </RelativeLayout>
