@@ -1,5 +1,25 @@
 ## Flashcard_App
 
+## Lab 4
+
+### App Description
+The user will be able to see animations when it transitions from the main screen to the add card screen. It will also see animations when it clicks on the next button, and when clicking on any question to reveal the answer.
+
+### App Walk-though
+
+![](https://i.imgur.com/5zEJsxP.gif)
+
+## Required
+- [x] User sees a transition animation when going from the main screen to the add card screen.
+- [x] User sees a reveal animation when the flashcard is tapped and the answer is shown
+- [x] User sees flashcards animating in / out when the 'next' button is tapped
+
+## Optional
+- [ ] Extra styling is added!
+- [ ] User sees a countdown timer for each question
+- [ ] User sees a 'card flip' animation when the card is tapped
+- [ ] User sees a celebration animation with confetti when they answer a question correctly
+
 ## Lab 3
 
 ### App Description
@@ -8,7 +28,6 @@ Flash Card now allows the user to create new cards and stores them locally on th
 ### App Walk-though
 
 ![](https://i.imgur.com/cUHcx01.gif)
-
 
 ## Required
 - [x] User can create a card and still see their created card when the app is relaunched.
@@ -28,7 +47,6 @@ Allows the user to create new questions and the answers using the add button. It
 ### App Walk-though
 
 ![](https://i.imgur.com/POlwnn7.gif)
-
 
 ## Required
 - [x] User can click on a ‘+’ button that takes the user to new ‘Add Card Screen’
