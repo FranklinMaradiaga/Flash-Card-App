@@ -4,10 +4,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Index;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewAnimationUtils;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,8 +45,30 @@ public class MainActivity extends AppCompatActivity {
         questionTextView.setOnClickListener(new View.OnClickListener() { // OR: findViewById(R.id.flashcard_question_TextView).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                View answerSideView = findViewById(R.id.flashcard_answer_TextView);
+
+// get the center for the clipping circle
+                int cx = answerSideView.getWidth() / 2;
+                int cy = answerSideView.getHeight() / 2;
+
+// get the final radius for the clipping circle
+                float finalRadius = (float) Math.hypot(cx, cy);
+
+// create the animator for this view (the start radius is zero)
+                Animator anim = ViewAnimationUtils.createCircularReveal(answerSideView, cx, cy, 0f, finalRadius);
+
+// hide the question and show the answer to prepare for playing the animation!
                 questionTextView.setVisibility(View.INVISIBLE);
-                answerTextView.setVisibility(View.VISIBLE);
+                answerSideView.setVisibility(View.VISIBLE);
+
+                anim.setDuration(3000);
+                anim.start();
+
+
+
+//                questionTextView.setVisibility(View.INVISIBLE);
+//                answerTextView.setVisibility(View.VISIBLE);
             }
         });
 
@@ -59,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(intent)
                 // We use the startActivityForResult method because we're expecting some data from the AddCardActivity class
                 startActivityForResult(intent, 100);
+                overridePendingTransition(R.anim.right_in, R.anim.left_in);
             }
         });
 
@@ -95,6 +122,47 @@ public class MainActivity extends AppCompatActivity {
                 questionTextView.setText(currentCard.getQuestion());
                 answerTextView.setText(currentCard.getAnswer());
 
+                final Animation leftOutAnim = AnimationUtils.loadAnimation(v.getContext(), R.anim.left_in);
+                final Animation rightInAnim = AnimationUtils.loadAnimation(v.getContext(), R.anim.right_in);
+
+                leftOutAnim.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                        // this method is called when the animation first starts
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        // this method is called when the animation is finished playing
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+                        // we don't need to worry about this method
+                    }
+                });
+
+                rightInAnim.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                        // this method is called when the animation first starts
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        // this method is called when the animation is finished playing
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+                        // we don't need to worry about this method
+                    }
+                });
+
+                findViewById(R.id.flashcard_question_TextView).startAnimation(leftOutAnim);
+                findViewById(R.id.flashcard_question_TextView).startAnimation(rightInAnim);
             }
         });
     }
